@@ -15,6 +15,16 @@ namespace LordSheo.Core
 			return source;
 		}
 		
+		public static bool In(this Vector2 source, Vector2 other, float dist)
+		{
+			dist *= dist;
+			return Vector2.SqrMagnitude(source - other) <= dist;
+		}
+		public static bool Out(this Vector2 source, Vector2 other, float dist)
+		{
+			return source.In(other, dist) == false;
+		}
+		
 		public static Vector3 X(this Vector3 source, float x)
 		{
 			source.x = x;
@@ -48,6 +58,16 @@ namespace LordSheo.Core
 			source.y = y;
 			source.z = z;
 			return source;
+		}
+
+		public static bool In(this Vector3 source, Vector3 other, float dist)
+		{
+			dist *= dist;
+			return Vector3.SqrMagnitude(source - other) <= dist;
+		}
+		public static bool Out(this Vector3 source, Vector3 other, float dist)
+		{
+			return source.In(other, dist) == false;
 		}
 	}
 }
